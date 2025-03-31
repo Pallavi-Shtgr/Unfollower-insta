@@ -18,7 +18,7 @@ const FAQLinks = () => {
   };
 
   return (
-    <div className="text-center text-gray-500 py-2 flex flex-col items-center">
+    <div className="text-center text-gray-400 py-2 flex flex-col items-center">
       {/* Navigation Links (Without Home) */}
       <div className="flex gap-4">
         {Object.keys(faqs).map((link) => (
@@ -37,10 +37,10 @@ const FAQLinks = () => {
 
       {/* FAQ Information Box */}
       {activeLink && activeLink !== "Help" && (
-        <div className="mt-4 p-4 bg-blue-50 text-black rounded-lg max-w-md shadow-lg">
-          <p>{faqs[activeLink]}</p>
-        </div>
-      )}
+  <div className="mt-4 p-4 bg-blue-50 text-black rounded-lg max-w-md shadow-lg">
+    <p>{faqs[activeLink as keyof typeof faqs]}</p>
+  </div>
+)}
 
       {/* Help Section Reference */}
       <div ref={helpRef}></div>

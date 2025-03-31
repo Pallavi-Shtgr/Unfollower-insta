@@ -33,7 +33,7 @@ export default function Home() {
         </p>
 
         {/* Copyright & GitHub Link */}
-        <div className="mt-6 text-gray-500 text-sm">
+        <div className="mt-6 text-gray-600 text-sm">
           © 2025 All rights reserved.  
           <a
             href="https://github.com/pallavi-shtgr"
