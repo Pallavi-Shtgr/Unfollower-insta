@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import FAQLinks from "@/components/FAQLinks";
 
@@ -10,6 +10,11 @@ export default function Home() {
   const [followersUploaded, setFollowersUploaded] = useState(false);
   const [followingUploaded, setFollowingUploaded] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [apiUrl, setApiUrl] = useState<string | undefined>(process.env.NEXT_PUBLIC_API_URL);
+
+  useEffect(() => {
+    console.log("API URL from environment:", apiUrl); // To check if the URL is correctly loaded
+  }, [apiUrl]);
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>, type: string) => {
     const file = event.target.files?.[0];
@@ -42,6 +47,25 @@ export default function Home() {
     const unfollowersList = following.filter((user) => !followers.includes(user));
     setUnfollowers(unfollowersList);
     setErrorMessage(""); // Clear error if the process is successful
+
+    // If you want to make an API call to process unfollowers, you can use the apiUrl here
+    // Example (if you had an endpoint to handle unfollower data):
+    if (apiUrl) {
+      fetch(`${apiUrl}/unfollowers`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ unfollowers: unfollowersList }),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          console.log("API response:", data);
+        })
+        .catch((error) => {
+          console.error("Error posting unfollowers:", error);
+        });
+    }
   };
 
   return (
