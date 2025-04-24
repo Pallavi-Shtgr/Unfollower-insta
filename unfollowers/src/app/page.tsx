@@ -90,7 +90,7 @@ export default function Home() {
         <p className="mt-4 text-red-600 font-semibold">{errorMessage}</p>
       )}
 
-      {/* Generate Unfollowers Button (Green) */}
+      {/* Generate Unfollowers  */}
       <button
         onClick={generateUnfollowers}
         className="mt-4 px-6 py-2 bg-green-600 text-white font-bold rounded-md shadow-md hover:bg-green-700 transition"
@@ -126,7 +126,7 @@ export default function Home() {
           Use this tool to check your data.
         </p>
 
-        {/* Copyright & GitHub Link */}
+  
         <div className="mt-6 text-gray-600 text-sm">
           © 2025 All rights reserved.
           <a
